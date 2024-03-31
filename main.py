@@ -6,7 +6,7 @@ class Book:
         self.author = author
         self.available = available
 
-class Library:
+class Lirary:
     def __init__(self):
         self.books = []
 
