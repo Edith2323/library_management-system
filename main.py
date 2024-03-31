@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/python3
 
 class Book:
     def __init__(self, title, author, available=True):
