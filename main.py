@@ -20,7 +20,7 @@ class Library:
             if book.available:
                 print(f"{book.title} by {book.author}")
 
-    def borrow_book(self, title)
+    def borrow_book(self, title) :
         for book in self.books:
             if book.title.lower() == title.lower() and book.available:
                 book.available = False
