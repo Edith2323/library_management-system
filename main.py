@@ -15,12 +15,19 @@ class Library:
         print(f"Book '{book.title}' by {book.author} added to the library.")
 
     def display_books(self):
-        print("Available Books:")
-        for book in self.books:
-            if book.available:
-                print(f"{book.title} by {book.author}")
+        if not self.books:
+            print("No books available in the library.")
+        else:
+            print("Available Books:")
+            for book in self.books:
+                if book.available:
+                    print(f"{book.title} by {book.author}")
 
     def borrow_book(self, title):
+        if not self.books:
+            print("No books available in the library.")
+            return
+        
         for book in self.books:
             if book.title.lower() == title.lower() and book.available:
                 book.available = False
@@ -29,21 +36,16 @@ class Library:
         print("Book not available for borrowing.")
 
     def return_book(self, title):
+        if not self.books:
+            print("No books available in the library.")
+            return
+        
         for book in self.books:
             if book.title.lower() == title.lower() and not book.available:
                 book.available = True
                 print(f"You have returned '{book.title}' by {book.author}.")
                 return
         print("Book not found or already returned.")
-
-    def search_book(self, query):
-        found_books = [book for book in self.books if query.lower() in book.title.lower() or query.lower() in book.author.lower()]
-        if found_books:
-            print("Found Books:")
-            for book in found_books:
-                print(f"{book.title} by {book.author}")
-        else:
-            print("No books found matching the search query.")
 
 def main():
     library = Library()
@@ -53,8 +55,7 @@ def main():
         print("2. Display Available Books")
         print("3. Borrow Book")
         print("4. Return Book")
-        print("5. Search Book")
-        print("6. Exit")
+        print("5. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -76,10 +77,6 @@ def main():
             library.return_book(title)
 
         elif choice == '5':
-            query = input("Enter book title or author to search: ")
-            library.search_book(query)
-
-        elif choice == '6':
             print("Exiting program...")
             break
 
