@@ -43,7 +43,7 @@ class Library:
         for book in self.books:
             if book.title.lower() == title.lower() and not book.available:
                 book.available = True
-                print(f"You have returne '{book.title}' by {book.author}.")
+                print(f"You have returned '{book.title}' by {book.author}.")
                 return
         print("Book not found or already returned.")
 
