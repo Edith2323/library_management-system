@@ -33,7 +33,7 @@ class Library:
                 book.available = False
                 print(f"You have borrowed '{book.title}' by {book.author}.")
                 return
-        print("Book not avalable for borrowing.")
+        print("Book not available for borrowing.")
 
     def return_book(self, title):
         if not self.books:
