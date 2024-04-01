@@ -20,7 +20,7 @@ class Library:
             if book.available:
                 print(f"{book.title} by {book.author}")
 
-    def borrow_book(self, title) :
+    def borrow_book(self, title):
         for book in self.books:
             if book.title.lower() == title.lower() and book.available:
                 book.available = False
@@ -36,6 +36,15 @@ class Library:
                 return
         print("Book not found or already returned.")
 
+    def search_book(self, query):
+        found_books = [book for book in self.books if query.lower() in book.title.lower() or query.lower() in book.author.lower()]
+        if found_books:
+            print("Found Books:")
+            for book in found_books:
+                print(f"{book.title} by {book.author}")
+        else:
+            print("No books found matching the search query.")
+
 def main():
     library = Library()
     while True:
@@ -44,7 +53,8 @@ def main():
         print("2. Display Available Books")
         print("3. Borrow Book")
         print("4. Return Book")
-        print("5. Exit")
+        print("5. Search Book")
+        print("6. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -59,7 +69,6 @@ def main():
 
         elif choice == '3':
             title = input("Enter title of the book you want to borrow: ")
-            email = input("Enter your student email address")
             library.borrow_book(title)
 
         elif choice == '4':
@@ -67,6 +76,10 @@ def main():
             library.return_book(title)
 
         elif choice == '5':
+            query = input("Enter book title or author to search: ")
+            library.search_book(query)
+
+        elif choice == '6':
             print("Exiting program...")
             break
 
@@ -75,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-1
